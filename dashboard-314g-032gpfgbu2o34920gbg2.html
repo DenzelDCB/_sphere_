@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Replace "https://example.com" with your destination URL -->
-    <!-- The "0" represents the number of seconds to wait before redirecting -->
-    <meta http-equiv="refresh" content="0; url=saved_resource.html">
-    <title>Redirecting...</title>
+    <title>Protected Redirect</title>
+    <script>
+        function checkPassword() {
+            // Replace 'YourSecretPassword' with your actual password
+            var password = prompt("Please enter the password to proceed:");
+            
+            if (password === "YourSecretPassword") {
+                // If correct, redirect to the secure page
+                window.location.href = "saved_resource.html";
+            } else {
+                // If incorrect or canceled, send to index.html
+                alert("Incorrect password. Redirecting to home page.");
+                window.location.href = "index.html";
+            }
+        }
+    </script>
 </head>
-<body>
-    <p>If you are not redirected, <a href="saved_resource.html">click here</a>.</p>
+<body onload="checkPassword()">
+    <p>This page is password protected. If nothing happens, <a href="index.html">click here to return home</a>.</p>
 </body>
 </html>
